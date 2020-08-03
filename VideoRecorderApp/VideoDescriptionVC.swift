@@ -39,7 +39,7 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    //MARK:- UI Configure
+    //MARK:- UI Configure 
 
     private func configureUI() {
         videoTitleTF.makeRoundCornerTextfield()
