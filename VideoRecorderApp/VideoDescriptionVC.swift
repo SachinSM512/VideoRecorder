@@ -38,6 +38,8 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
         title = "UPLOAD VIDEO"
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    //MARK:- UI Configure
 
     private func configureUI() {
         videoTitleTF.makeRoundCornerTextfield()
