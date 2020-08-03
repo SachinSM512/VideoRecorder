@@ -26,6 +26,8 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
     var videoUrl: URL?
     var tagText = ""
     
+    //MARK:- View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

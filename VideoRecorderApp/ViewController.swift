@@ -19,6 +19,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate , UINavi
     @IBOutlet weak var addVideoBtn: UIButton!
     var imagePickerController = UIImagePickerController()
 
+    //MARK:- View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
