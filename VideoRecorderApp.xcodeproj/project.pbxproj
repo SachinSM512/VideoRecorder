@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1009AED24D97FB700E85B00 /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009AEC24D97FB700E85B00 /* VideoData.swift */; };
+		E1009AEF24D9821900E85B00 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009AEE24D9821900E85B00 /* VideoCollectionViewCell.swift */; };
 		E1B8F97024D54C6E004FEDB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8F96F24D54C6E004FEDB6 /* AppDelegate.swift */; };
 		E1B8F97224D54C6E004FEDB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8F97124D54C6E004FEDB6 /* SceneDelegate.swift */; };
 		E1B8F97424D54C6E004FEDB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8F97324D54C6E004FEDB6 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1009AEC24D97FB700E85B00 /* VideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoData.swift; sourceTree = "<group>"; };
+		E1009AEE24D9821900E85B00 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1B8F96C24D54C6E004FEDB6 /* VideoRecorderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoRecorderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B8F96F24D54C6E004FEDB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B8F97124D54C6E004FEDB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,11 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				E1B8F97324D54C6E004FEDB6 /* ViewController.swift */,
+				E1009AEE24D9821900E85B00 /* VideoCollectionViewCell.swift */,
 				E1D8836524D698F600303B8C /* VideoDescriptionVC.swift */,
 				E1B8F97524D54C6E004FEDB6 /* Main.storyboard */,
 				E1B8F97D24D54C70004FEDB6 /* Info.plist */,
 				E1B8F98324D5794C004FEDB6 /* Supporting Files */,
 				E1D8836324D6944F00303B8C /* Utils.swift */,
+				E1009AEC24D97FB700E85B00 /* VideoData.swift */,
 			);
 			path = VideoRecorderApp;
 			sourceTree = "<group>";
@@ -155,8 +161,10 @@
 				E1B8F97424D54C6E004FEDB6 /* ViewController.swift in Sources */,
 				E1B8F97024D54C6E004FEDB6 /* AppDelegate.swift in Sources */,
 				E1D8836624D698F600303B8C /* VideoDescriptionVC.swift in Sources */,
+				E1009AEF24D9821900E85B00 /* VideoCollectionViewCell.swift in Sources */,
 				E1B8F97224D54C6E004FEDB6 /* SceneDelegate.swift in Sources */,
 				E1D8836424D6944F00303B8C /* Utils.swift in Sources */,
+				E1009AED24D97FB700E85B00 /* VideoData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

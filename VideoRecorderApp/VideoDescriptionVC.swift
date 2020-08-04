@@ -12,6 +12,11 @@ import AVFoundation
 import MediaPlayer
 import AudioToolbox
 
+protocol VideoDetailsDelegate {
+    func videoDetails(videoData: VideoData)
+}
+
+
 class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewControllerDelegate {
     @IBOutlet weak var videoPreviewImageView: UIImageView!
     @IBOutlet weak var videoTitleTF: UITextField!
@@ -22,10 +27,10 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
     @IBOutlet weak var tagBtn2: UIButton!
     @IBOutlet weak var tagBtn3: UIButton!
     @IBOutlet weak var tagBtn4: UIButton!
-    
+    var delegate : VideoDetailsDelegate?
     var videoUrl: URL?
     var tagText = ""
-    
+    var videoTitle: String = ""
     //MARK:- View Life Cycle
 
     override func viewDidLoad() {
@@ -52,7 +57,7 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
         tagBtn3.makeRoundCornerButtonWithoutBorder()
         tagBtn4.makeRoundCornerButtonWithoutBorder()
         
-        if let url = videoUrl, let previwImage = imageFromVideo(url: url, at: 5) {
+        if let url = videoUrl, let previwImage = Utils.imageFromVideo(url: url, at: 5) {
         videoPreviewImageView.image = previwImage
             videoPreviewImageView.layer.cornerRadius = 10
             videoPreviewImageView.layer.masksToBounds = true
@@ -62,6 +67,7 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
     //MARK:- UITextField Delegate Methods
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        videoTitle = videoTitleTF.text!
         self.view.endEditing(true)
         return true
     }
@@ -70,9 +76,14 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
 
     @IBAction func doneButtonAction(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: "Title", message: "Video Added Succesfully", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "Title", message: "Video Added Succesfully", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+//        present(alert, animated: true, completion: nil)
+         let videoDetails = VideoData()
+        videoDetails.title = videoTitle
+        videoDetails.videoUrl = videoUrl
+        delegate?.videoDetails(videoData: videoDetails)
+        navigationController?.popToRootViewController(animated: true)
 
         //let imageData = Data(contentsOf: videoUrl!) // video data for uploading to server
     }
@@ -89,38 +100,19 @@ class VideoDescriptionVC: UIViewController, UITextFieldDelegate, AVPlayerViewCon
     @IBAction func videoPreviwButtonAction(_ sender: UIButton) {
         playVideo()
     }
-
+    
     //MARK:- Video Play Action
 
-    private func playVideo() {
-        if let url  = videoUrl {
-            let player = AVPlayer(url: url)
-            let playervc = AVPlayerViewController()
-            playervc.delegate = self
-            playervc.player = player
-            present(playervc, animated: true) {
-                playervc.player!.play()
-            }
-        }
-    }
-
-    func imageFromVideo(url: URL, at time: TimeInterval) -> UIImage? {
-        let asset = AVURLAsset(url: url)
-
-        let assetIG = AVAssetImageGenerator(asset: asset)
-        assetIG.appliesPreferredTrackTransform = true
-        assetIG.apertureMode = AVAssetImageGenerator.ApertureMode.encodedPixels
-
-        let cmTime = CMTime(seconds: time, preferredTimescale: 5)
-        let thumbnailImageRef: CGImage
-        do {
-            thumbnailImageRef = try assetIG.copyCGImage(at: cmTime, actualTime: nil)
-        } catch let error {
-            print("Error: \(error)")
-            return nil
-        }
-
-        return UIImage(cgImage: thumbnailImageRef)
-    }
+       private func playVideo() {
+           if let url  = videoUrl {
+               let player = AVPlayer(url: url)
+               let playervc = AVPlayerViewController()
+               playervc.delegate = self
+               playervc.player = player
+               present(playervc, animated: true) {
+                   playervc.player!.play()
+               }
+           }
+       }
 }
 
